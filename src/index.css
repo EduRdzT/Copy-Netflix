@@ -1,13 +1,32 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: Netflix-sans;
+  src: url("../public/fonts/NetflixSansBlack.ttf"),
+    url("../public/fonts/NetflixSansBold.ttf"),
+    url("../public/fonts/NetflixSansIcon.ttf"),
+    url("../public/fonts/NetflixSansLight.ttf"),
+    url("../public/fonts/NetflixSansMedium.ttf"),
+    url("../public/fonts/NetflixSansRegular.ttf"),
+    url("../public/fonts/NetflixSansThin.ttf");
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --principal: rgb(20, 20, 20);
+  --rojo: rgb(233, 5, 20);
+  --rojo-secundario: rgb(138, 5, 12);
+  --boton: rgb(96, 94, 92);
+  --text-color: rgb(255, 255, 255);
+  --text-logo: "Bebas Neue", cursive;
+  --text-body: Netflix-sans;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--principal);
+  color: var(--text-color);
+  font-family: var(--text-body);
+  overflow-x: hidden;
 }
