@@ -1,4 +1,74 @@
+/*--------------------- Global ---------------------------*/
 .active {
   font-weight: bold;
-  color: #61afde !important;
+  color: #c2c2c2 !important;
 }
+img {
+  height: auto;
+  width: 100%;
+}
+/*--------------------- Navbar ---------------------------*/
+.container-bar {
+  /* border: 1px solid red; */
+  position: fixed;
+  /* position: static; */
+  /* position: sticky; */
+  width: 100%;
+  font-size: 1vw;
+  padding: 0 4%;
+  height: 68px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+.container-bar ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, auto) auto 1fr;
+  gap: 20px;
+}
+.container-bar a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.logo {
+  color: var(--rojo);
+  font-family: var(--text-logo);
+  text-transform: uppercase;
+}
+.icons {
+  display: grid;
+  grid-template-columns: repeat(2, 32px) auto;
+  gap: 1.2rem;
+  align-items: center;
+}
+.icons span {
+  font-size: 1.5rem;
+}
+.icons a:last-child {
+  display: grid;
+  grid-template-columns: repeat(2, 32px);
+}
+.border {
+  border-radius: 11%;
+  -webkit-border-radius: 11%;
+  -moz-border-radius: 11%;
+  -ms-border-radius: 11%;
+  -o-border-radius: 11%;
+}
+/*--------------------- Inicio ---------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/

@@ -1,9 +1,14 @@
+import Imagen from "../components/imagen";
+
 const Inicio = () => {
   return (
-    <div>
-      <h3>Inicio</h3>
-      <p>Bienvenid@s al tema de las Rutas en React</p>
-    </div>
+    <figcaption>
+      <Imagen
+        location="./assets/astronaut-gd2496559f_1280.png"
+        clase={false}
+        title="img Perfil"
+      />
+    </figcaption>
   );
 };
 

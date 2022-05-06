@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
+import Imagen from "../components/imagen";
+import Logo from "../components/logo";
 
 const Pages = () => {
   return (
     <nav className="container-bar">
+      <Link to="/browse">
+        <Logo logo="Copy-Net" />
+      </Link>
       <ul>
-        <li>
-          <Link to="/browse">Netflix</Link>
-        </li>
         <li>
           <Link to="/browse">Inicio</Link>
         </li>
@@ -22,13 +24,21 @@ const Pages = () => {
         <li>
           <Link to="/browse/my-list">Mi lista</Link>
         </li>
-        <li>
-          <Link to="/search">busqueda</Link>
-        </li>
-        <li>
-          <Link to="/YourAccount">Cuenta</Link>
-        </li>
       </ul>
+      <div className="icons">
+        <Link to="/search">
+          <span className="material-symbols-outlined">search</span>
+        </Link>
+        <span className="material-symbols-outlined">notifications</span>
+        <Link to="/YourAccount">
+          <Imagen
+            location="./assets/astronaut-gd2496559f_1280.png"
+            clase="border"
+            title="img Perfil"
+          />
+          <span class="material-symbols-outlined">arrow_drop_down</span>
+        </Link>
+      </div>
     </nav>
   );
 };
