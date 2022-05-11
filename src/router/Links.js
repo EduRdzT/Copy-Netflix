@@ -32,11 +32,11 @@ const Pages = () => {
         <span className="material-symbols-outlined">notifications</span>
         <Link to="/YourAccount">
           <Imagen
-            location="./assets/astronaut-gd2496559f_1280.png"
+            location="./assets/perfil-img.png"
             clase="border"
             title="img Perfil"
           />
-          <span class="material-symbols-outlined">arrow_drop_down</span>
+          <span className="material-symbols-outlined">arrow_drop_down</span>
         </Link>
       </div>
     </nav>

@@ -1,14 +1,15 @@
-import Imagen from "../components/imagen";
+import { useState } from "react";
+import AllMovies from "../components/allMovies";
+import Intro from "../components/intro";
 
 const Inicio = () => {
+  const [movie, setMovie] = useState(null);
+
   return (
-    <figcaption>
-      <Imagen
-        location="./assets/astronaut-gd2496559f_1280.png"
-        clase={false}
-        title="img Perfil"
-      />
-    </figcaption>
+    <main>
+      <Intro setMovie={setMovie} />
+      <AllMovies movie={movie} />
+    </main>
   );
 };
 
