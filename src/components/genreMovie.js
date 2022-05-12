@@ -1,5 +1,5 @@
 import Imagen from "./imagen";
-import imgAvailable from "../assets/no-image-available-icon-6.png";
+import imgAvailable from "../assets/no-image-available.jpg";
 
 export default function GenreMovie({ genre, value, index }) {
   const urlImg = "https://image.tmdb.org/t/p/original";

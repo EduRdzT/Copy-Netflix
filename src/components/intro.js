@@ -43,18 +43,18 @@ export class Intro extends Component {
 
   render() {
     return (
-      <>
+      <figure className="intro">
         {this.state.movie && (
           <Imagen
             location={
               this.state.movie.backdrop_path &&
               this.state.urlImg + this.state.movie.backdrop_path
             }
-            clase="intro"
+            clase={false}
             title={this.state.movie.title}
           />
         )}
-      </>
+      </figure>
     );
   }
 }

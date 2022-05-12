@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Imagen from "../components/imagen";
 import Logo from "../components/logo";
+import imgPerfil from "../assets/perfil-img.png";
 
 const Pages = () => {
   return (
@@ -31,11 +32,7 @@ const Pages = () => {
         </Link>
         <span className="material-symbols-outlined">notifications</span>
         <Link to="/YourAccount">
-          <Imagen
-            location="./assets/perfil-img.png"
-            clase="border"
-            title="img Perfil"
-          />
+          <Imagen location={imgPerfil} clase="border" title="img Perfil" />
           <span className="material-symbols-outlined">arrow_drop_down</span>
         </Link>
       </div>

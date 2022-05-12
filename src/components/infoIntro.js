@@ -1,28 +1,31 @@
 import React from "react";
 import Imagen from "./imagen";
+import logoBatman from "../assets/the_batman_logo.png";
 
 function InfoIntro({ info }) {
   return (
-    <div className="info-intro">
+    <figure className="info-intro">
       <Imagen
-        location="./assets/the_batman_logo.png"
+        location={logoBatman}
         clase="border"
-        title="img Perfil"
+        title={info && info.movie.title}
       />
-      <p>{info && info.movie.overview}</p>
-      <button className="btn-play">
-        <p>
-          <span className="material-symbols-outlined">play_circle</span>
-          Reproducir
-        </p>
-      </button>
-      <button className="btn-info">
-        <p>
-          <span className="material-symbols-outlined">info</span>
-          Reproducir
-        </p>
-      </button>
-    </div>
+      <figcaption>{info && info.movie.overview}</figcaption>
+      <div className="container-btn">
+        <button className="btn-play">
+          <p>
+            <span className="material-symbols-outlined">play_circle</span>
+            Reproducir
+          </p>
+        </button>
+        <button className="btn-info">
+          <p>
+            <span className="material-symbols-outlined">info</span>
+            Más información
+          </p>
+        </button>
+      </div>
+    </figure>
   );
 }
 

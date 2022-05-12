@@ -8,19 +8,31 @@ img {
   width: 100%;
 }
 /*--------------------- Navbar ---------------------------*/
+.background-bar-pri {
+  background-color: var(--principal);
+  transition: background-color 3s;
+  -webkit-transition: background-color 3s;
+  -moz-transition: background-color 3s;
+  -ms-transition: background-color 3s;
+  -o-transition: background-color 3s;
+}
 .container-bar {
-  /* border: 1px solid red; */
+  background-color: transparent;
+  transition: background-color 3s;
   position: fixed;
-  /* position: static; */
-  /* position: sticky; */
+  font-weight: thin;
   width: 100%;
-  font-size: 1vw;
+  font-size: 0.9vw;
   padding: 0 4%;
-  height: 68px;
+  height: 60px;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 1.5rem;
+  gap: 2.5rem;
   align-items: center;
+  -webkit-transition: background-color 3s;
+  -moz-transition: background-color 3s;
+  -ms-transition: background-color 3s;
+  -o-transition: background-color 3s;
 }
 .container-bar ul {
   list-style: none;
@@ -36,6 +48,7 @@ img {
   color: var(--rojo);
   font-family: var(--text-logo);
   text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgb(56, 56, 56);
 }
 .icons {
   display: grid;
@@ -45,6 +58,7 @@ img {
 }
 .icons span {
   font-size: 1.5rem;
+  overflow: hidden;
 }
 .icons a:last-child {
   display: grid;
@@ -58,6 +72,84 @@ img {
   -o-border-radius: 11%;
 }
 /*--------------------- Inicio ---------------------------*/
+.intro {
+  position: absolute;
+  z-index: -1;
+}
+.intro::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px -10px 50px var(--principal) inset,
+    0px 3px 50px var(--principal) inset;
+}
+.genres-movie {
+  padding-top: 60px;
+  display: grid;
+  grid-template-rows: 40vw 1fr;
+}
+.info-intro {
+  width: 50%;
+  padding: 3vw 5% 0;
+  display: grid;
+  grid-template-rows: 50% 20% min-content;
+  overflow: hidden;
+}
+.info-intro img {
+  height: 100%;
+  width: auto;
+}
+.info-intro figcaption {
+  font-size: 0.9vw;
+  text-shadow: 1px 1px 1px rgb(56, 56, 56);
+}
+.btn-play,
+.btn-info {
+  margin-top: 2%;
+  margin-right: 10px;
+  padding: 7px 20px;
+  border: none;
+  font-size: 1.3vw;
+  font-weight: bold;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.btn-play p,
+.btn-info p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-play p span,
+.btn-info p span {
+  margin-right: 0.9vw;
+  font-size: 2.1vw;
+  overflow: hidden;
+}
+.btn-info {
+  background-color: rgba(161, 161, 161, 0.7);
+  color: var(--text-color);
+}
+/*-------------------- All Movies ------------------------*/
+.container-genre {
+  display: grid;
+  grid-template-rows: repeat(19, auto 170px);
+}
+/* h2 */
+.genre {
+  padding: 5px 3vw;
+  font-size: 1.6vw;
+}
+.movies {
+  display: grid;
+  grid-template-columns: repeat(20, 240px);
+  gap: 4px;
+  padding-left: 3vw;
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
@@ -69,6 +161,43 @@ img {
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
+/*--------------------- Footer ---------------------------*/
+.footer {
+  width: 100%;
+  padding: 20px 10px;
+  margin-top: 20px;
+  position: relative;
+}
+footer > p {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  color: var(--boton);
+}
+.card-tmdb {
+  width: 50%;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+}
+.card-tmdb figcaption {
+  width: 80%;
+}
+.card-tmdb figcaption a {
+  color: var(--rojo);
+  text-decoration: none;
+  font-weight: bold;
+}
+.logo-tmdb {
+  width: 20%;
+  padding-right: 10px;
+}
+/*------------------ Media Query -------------------------*/
+@media (max-width: 950px) {
+  .container-bar {
+    height: 40px;
+  }
+  .genres-movie {
+    padding-top: 40px;
+  }
+}
