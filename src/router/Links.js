@@ -2,28 +2,62 @@ import { Link } from "react-router-dom";
 import Imagen from "../components/imagen";
 import Logo from "../components/logo";
 import imgPerfil from "../assets/perfil-img.png";
+import { useEffect, useState } from "react";
 
 const Pages = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const detectarScroll = () => setScrollY(window.pageYOffset);
+
+    window.addEventListener("scroll", detectarScroll);
+
+    const refNavBar = document.getElementById("navbar");
+
+    if (scrollY > 100) {
+      refNavBar.classList.add("background-bar-pri");
+    } else {
+      refNavBar.classList.remove("background-bar-pri");
+    }
+    //return () => window.removeEventListener("scroll", detectarScroll);
+  }, [scrollY]);
+
+  const handleToggelMenu = (e) => {
+    const $active = document.querySelector(".active");
+    $active.classList.remove("active");
+    e.target.classList.add("active");
+  };
+
   return (
-    <nav className="container-bar">
+    <nav id="navbar" className="container-bar">
       <Link to="/browse">
         <Logo logo="Copy-Net" />
       </Link>
       <ul>
         <li>
-          <Link to="/browse">Inicio</Link>
+          <Link to="/browse" onClick={handleToggelMenu} className="active">
+            Inicio
+          </Link>
         </li>
         <li>
-          <Link to="/browse/genre/454">Series</Link>
+          <Link to="/browse/genre/454" onClick={handleToggelMenu}>
+            Series
+          </Link>
         </li>
         <li>
-          <Link to="/browse/genre/45">Peliculas</Link>
+          <Link to="/browse/genre/45" onClick={handleToggelMenu}>
+            Peliculas
+          </Link>
         </li>
         <li>
-          <Link to="/latest">Novedades populares</Link>
+          <Link to="/latest" onClick={handleToggelMenu}>
+            Novedades populares
+          </Link>
         </li>
         <li>
-          <Link to="/browse/my-list">Mi lista</Link>
+          <Link to="/browse/my-list" onClick={handleToggelMenu}>
+            Mi lista
+          </Link>
         </li>
       </ul>
       <div className="icons">
