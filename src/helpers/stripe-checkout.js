@@ -1,4 +1,3 @@
-//import STRIPE_KEYS from './stripe-keys.js';
 export default {
   keyApi: "3236e11739b44c56fbc857bade3c0a00",
   accessToken:

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TMDB_KEYS from "../helpers/TMDb-key";
+import TMDB_KEYS from "../helpers/stripe-checkout";
 import { getHttp } from "../helpers/getHttp";
 import GenreMovie from "./genreMovie";
 

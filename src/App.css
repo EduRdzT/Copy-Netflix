@@ -82,7 +82,8 @@ img {
 .intro::before {
   content: "";
   position: absolute;
-  width: 100%;
+  right: -50px;
+  width: 150%;
   height: 100%;
   box-shadow: 0px -10px 50px var(--principal) inset,
     0px 3px 50px var(--principal) inset;

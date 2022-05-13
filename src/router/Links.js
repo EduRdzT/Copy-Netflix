@@ -14,7 +14,7 @@ const Pages = () => {
 
     const refNavBar = document.getElementById("navbar");
 
-    if (scrollY > 100) {
+    if (scrollY > 50) {
       refNavBar.classList.add("background-bar-pri");
     } else {
       refNavBar.classList.remove("background-bar-pri");

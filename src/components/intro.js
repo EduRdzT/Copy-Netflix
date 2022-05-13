@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TMDB_KEYS from "../helpers/TMDb-key";
+import TMDB_KEYS from "../helpers/stripe-checkout";
 import Imagen from "./imagen";
 
 export class Intro extends Component {
