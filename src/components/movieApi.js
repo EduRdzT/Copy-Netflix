@@ -31,9 +31,9 @@ export default function MovieApi() {
   const [movies, setMovies] = useState([]);
   const [sizeHeight, setSizeHeight] = useState(sizecontainer(refMovies));
 
-  window.addEventListener("load", () =>
-    setSizeHeight(() => sizecontainer(refMovies))
-  );
+  setTimeout(() => {
+    setSizeHeight(() => sizecontainer(refMovies));
+  }, 100);
 
   window.addEventListener("resize", () =>
     setSizeHeight(() => sizecontainer(refMovies))
@@ -74,10 +74,10 @@ export default function MovieApi() {
         arrayMovies.map(([genre, value], index) => (
           <div key={index} className="container-genre">
             <h2 className="genre">{genre}</h2>
-            <article className="movies" ref={refMovies}>
+            <article id={"id" + index} className={"movies"} ref={refMovies}>
               <GenreMovie key={index} value={value} />
             </article>
-            <MovieSlide key={index} moviesHeight={sizeHeight} />
+            <MovieSlide key={index} moviesHeight={sizeHeight} index={index} />
           </div>
         ))
       )}
