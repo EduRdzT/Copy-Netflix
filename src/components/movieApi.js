@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TMDB_KEYS from "../helpers/stripe-checkout";
 import { getHttp } from "../helpers/getHttp";
 import GenreMovie from "./genreMovie";
+import MovieSlide from "./movieSlide";
 
 const genres = [
   { id: 28, name: "Acción" },
@@ -26,7 +27,18 @@ const genres = [
 ];
 
 export default function MovieApi() {
+  let refMovies = useRef();
   const [movies, setMovies] = useState([]);
+  const [sizeHeight, setSizeHeight] = useState(sizecontainer(refMovies));
+
+  window.addEventListener("load", () =>
+    setSizeHeight(() => sizecontainer(refMovies))
+  );
+
+  window.addEventListener("resize", () =>
+    setSizeHeight(() => sizecontainer(refMovies))
+  );
+
   let key = TMDB_KEYS.keyApi;
   // let url = `https://api.themoviedb.org/3/movie/76341?api_key=${key}`;
   // let url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=es-ES`;
@@ -55,14 +67,24 @@ export default function MovieApi() {
   const arrayMovies = Object.entries(movies);
 
   return (
-    <div className="container-genre">
+    <div className="all-movies">
       {arrayMovies.length === 0 ? (
         <h3>Cargando...</h3>
       ) : (
         arrayMovies.map(([genre, value], index) => (
-          <GenreMovie key={index} genre={genre} value={value} />
+          <div key={index} className="container-genre">
+            <h2 className="genre">{genre}</h2>
+            <article className="movies" ref={refMovies}>
+              <GenreMovie key={index} value={value} />
+            </article>
+            <MovieSlide key={index} moviesHeight={sizeHeight} />
+          </div>
         ))
       )}
     </div>
   );
+}
+
+function sizecontainer(refMovies) {
+  return refMovies.current ? refMovies.current.clientHeight : 0;
 }

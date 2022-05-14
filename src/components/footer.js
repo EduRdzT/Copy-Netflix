@@ -15,7 +15,7 @@ const Footer = () => {
           <a href="https://www.themoviedb.org/">www.themoviedb.org</a>
         </figcaption>
       </figure>
-      <p>@Eduardo Rodríguez</p>
+      <i>@Eduardo Rodríguez</i>
     </footer>
   );
 };

@@ -43,6 +43,7 @@
 }
 :root {
   --principal: rgb(20, 20, 20);
+  --principalobs: rgb(20, 20, 20, 0.5);
   --rojo: rgb(233, 5, 20);
   --rojo-secundario: rgb(138, 5, 12);
   --boton: rgb(96, 94, 92);
