@@ -15,9 +15,9 @@ const MovieSlide = ({ moviesHeight, index }) => {
       $img = $movies.querySelector("img").offsetWidth;
 
     if (Btn === "next") {
-      scrollMovies = scrollMovies + 8 * 5 + $img * 5 + 1;
+      scrollMovies = scrollMovies + 8 * 5 + $img * 5;
     } else if (Btn === "prev") {
-      scrollMovies = scrollMovies - 8 * 5 - $img * 5 - 1;
+      scrollMovies = scrollMovies - 8 * 5 - $img * 5;
     }
 
     if (scrollMovies > 3300) {

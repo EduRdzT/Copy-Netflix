@@ -3,6 +3,7 @@ import Imagen from "../components/imagen";
 import Logo from "../components/logo";
 import imgPerfil from "../assets/perfil-img.png";
 import { useEffect, useState } from "react";
+import Search from "../components/search";
 
 const Pages = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -61,9 +62,12 @@ const Pages = () => {
         </li>
       </ul>
       <div className="icons">
-        <Link to="/search">
-          <span className="material-symbols-outlined">search</span>
-        </Link>
+        <div>
+          <Search />
+          <Link to="/search" style={{ display: "none" }}>
+            Search
+          </Link>
+        </div>
         <span className="material-symbols-outlined">notifications</span>
         <Link to="/YourAccount">
           <Imagen location={imgPerfil} clase="border" title="img Perfil" />
