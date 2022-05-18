@@ -35,7 +35,10 @@ figcaption {
   -ms-transition: background-color 0.8s;
   -o-transition: background-color 0.8s;
 }
-.container-bar ul {
+.invisible {
+  display: none;
+}
+.wrapper {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, auto) auto 1fr;
@@ -51,6 +54,7 @@ figcaption {
 .active {
   font-weight: bold;
   color: var(--text-color) !important;
+  cursor: context-menu;
 }
 .logo {
   color: var(--rojo);
@@ -70,33 +74,33 @@ figcaption {
   background-color: transparent;
   border: none;
 }
-/* .card-filter {
-  border: none;
-  height: 36px;
-  width: 36px;
-  border-radius: 18px;
-  padding-left: 36px;
-  -webkit-border-radius: 18px;
-  -moz-border-radius: 18px;
-  -ms-border-radius: 18px;
-  -o-border-radius: 18px;
-  background: url(./assets/lupa.png) no-repeat 10px/16px, white;
-  cursor: pointer;
-  transition-property: width, border-radius, box-shadow;
-  transition-duration: 300ms;
-  box-shadow: 0 0 0 2px var(--amarillo);
+.container-search {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 8px;
+  padding: 0 4px;
+  align-items: center;
+  border: 1px solid white;
+  background-color: var(--principal);
 }
-.card-filter:focus,
-.card-filter:not(:placeholder-shown) {
-  width: 200px;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+.container-search input[type="text"] {
+  background-color: transparent;
+  border: none;
+  height: 34px;
+  width: 0;
+  font-size: 0.85rem;
+  color: var(--text-color);
   outline: none;
-  cursor: auto;
-} */
+  transition: width 400ms;
+  -webkit-transition: width 400ms;
+  -moz-transition: width 400ms;
+  -ms-transition: width 400ms;
+  -o-transition: width 400ms;
+}
+.container-search input[type="text"]:focus,
+.container-search input[type="text"]:not(:placeholder-shown) {
+  width: 180px;
+}
 .icons span {
   font-size: 1.5rem;
   overflow: hidden;
@@ -121,9 +125,6 @@ figcaption {
   -moz-transition: transform 0.6s;
   -ms-transition: transform 0.6s;
   -o-transition: transform 0.6s;
-}
-.icons a:last-child:hover {
-  height: 68px;
 }
 .icons a:last-child:not(:hover) span {
   transition: transform 0.6s;
@@ -361,5 +362,66 @@ footer > i {
   } */
   .genres-movie {
     padding-top: 40px;
+  }
+}
+@media (max-width: 885px) {
+  .container-bar {
+    font-size: 0.8rem;
+    overflow-x: visible;
+  }
+  .drop-btn {
+    font-size: 0.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+    align-items: center;
+  }
+  .drop-btn span {
+    overflow: hidden;
+  }
+  .wrapper {
+    border-top: 2px solid white;
+    position: absolute;
+    top: 50px;
+    left: 5%;
+    display: grid;
+    grid-template-rows: repeat(5, 45px);
+    grid-template-columns: 250px;
+    gap: 0;
+    width: 250px;
+    list-style: none;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    padding: 0;
+    overflow: visible;
+  }
+  .wrapper::before {
+    content: "";
+    position: absolute;
+    left: calc(50% - (12px / 2));
+    top: calc(-12px / 2);
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    z-index: -1;
+  }
+  .wrapper li a {
+    position: relative;
+    color: #a3a2a2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+  .wrapper li:hover a {
+    background: rgba(80, 80, 80, 0.2);
   }
 }
