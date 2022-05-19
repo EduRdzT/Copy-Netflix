@@ -8,6 +8,9 @@ h2,
 figcaption {
   cursor: context-menu;
 }
+.invisible {
+  display: none;
+}
 /*--------------------- Navbar ---------------------------*/
 .background-bar-pri {
   background-color: var(--principal);
@@ -35,14 +38,44 @@ figcaption {
   -ms-transition: background-color 0.8s;
   -o-transition: background-color 0.8s;
 }
-.invisible {
-  display: none;
-}
 .wrapper {
-  list-style: none;
+  border-top: 2px solid white;
+  position: absolute;
+  top: 50px;
+  left: 5%;
   display: grid;
-  grid-template-columns: repeat(3, auto) auto 1fr;
-  gap: 20px;
+  grid-template-rows: repeat(5, 45px);
+  gap: 0;
+  width: 250px;
+  list-style: none;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+  padding: 0;
+  overflow: visible;
+}
+ul.wrapper::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - (12px / 2));
+  top: -12px;
+  display: inline-block;
+  border-right: 10px solid transparent;
+  border-bottom: 12px solid white;
+  border-left: 10px solid transparent;
+  z-index: -1;
+}
+.wrapper li a {
+  position: relative;
+  color: #a3a2a2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.wrapper li:hover a {
+  background: rgba(80, 80, 80, 0.2);
 }
 .container-bar a {
   color: var(--text-color);
@@ -109,7 +142,7 @@ figcaption {
 }
 .icons a:last-child {
   display: grid;
-  grid-template-columns: repeat(2, 32px);
+  grid-template-columns: 32px auto;
   justify-items: center;
   align-items: center;
   overflow: hidden;
@@ -334,8 +367,8 @@ footer > i {
 .card-tmdb::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 9%;
+  height: 50%;
 }
 .card-tmdb figcaption {
   width: 80%;
@@ -353,15 +386,21 @@ footer > i {
 @media (max-width: 950px) {
   .container-bar {
     height: 40px;
+    gap: 1.5rem;
   }
-  .icons a:last-child:hover {
-    height: 40px;
-  }
-  /* .icons a:last-child span {
+  .icons a:last-child span {
     display: none;
-  } */
+  }
   .genres-movie {
     padding-top: 40px;
+  }
+}
+@media (min-width: 885px) {
+  .container-bar div ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, auto) auto 1fr;
+    gap: 20px;
   }
 }
 @media (max-width: 885px) {
@@ -375,53 +414,9 @@ footer > i {
     grid-template-columns: repeat(2, auto);
     justify-content: start;
     align-items: center;
+    width: 60px;
   }
   .drop-btn span {
     overflow: hidden;
-  }
-  .wrapper {
-    border-top: 2px solid white;
-    position: absolute;
-    top: 50px;
-    left: 5%;
-    display: grid;
-    grid-template-rows: repeat(5, 45px);
-    grid-template-columns: 250px;
-    gap: 0;
-    width: 250px;
-    list-style: none;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.8);
-    transition: all 0.3s ease;
-    padding: 0;
-    overflow: visible;
-  }
-  .wrapper::before {
-    content: "";
-    position: absolute;
-    left: calc(50% - (12px / 2));
-    top: calc(-12px / 2);
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    z-index: -1;
-  }
-  .wrapper li a {
-    position: relative;
-    color: #a3a2a2;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-  }
-  .wrapper li:hover a {
-    background: rgba(80, 80, 80, 0.2);
   }
 }
