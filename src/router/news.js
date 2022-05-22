@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
 import { isMenu } from "../components/dropdown";
+import { New } from "../components/navbar-card";
 
 const News = () => {
   let news = useRef();
@@ -15,11 +15,11 @@ const News = () => {
         <span className="material-symbols-outlined">notifications</span>
       </div>
       <div className="wrapper invisible" ref={news}>
-        <Link to="/YourAccount">Cuenta</Link>
-        <Link to="/YourAccount">Cuenta</Link>
-        <Link to="/YourAccount">Cuenta</Link>
-        <Link to="/YourAccount">Cuenta</Link>
-        <Link to="/YourAccount">Cuenta</Link>
+        <New />
+        <New />
+        <New />
+        <New />
+        <New />
       </div>
     </div>
   );
