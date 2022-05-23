@@ -259,6 +259,39 @@ ul.wrapper::before {
   -ms-border-radius: 11%;
   -o-border-radius: 11%;
 }
+.container-bar-first {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 4%;
+  height: 70px;
+}
+.container-bar-first a {
+  text-decoration: none;
+}
+.sign {
+  background-color: var(--rojo);
+  color: var(--text-color);
+  padding: 5px 12px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+/*---------------------- Login ---------------------------*/
+.login {
+  background: url("./assets/fonfo-inicio-de-sesion.jpg");
+  box-shadow: 0px -20vh 100vh var(--principal) inset,
+    0px 20vh 100vh var(--principal) inset;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /*--------------------- Inicio ---------------------------*/
 .intro {
   position: absolute;
@@ -420,7 +453,6 @@ ul.wrapper::before {
   -ms-transform: scaleY(1.5);
   -o-transform: scaleY(1.5);
 }
-/*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

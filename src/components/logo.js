@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 let limit = -Infinity;
 
-function Span({ posicion, size, letter }) {
+function Span({ size, letter }) {
   limit = size > limit ? size : limit;
   const styles = {
     fontSize: `${size}px`,
@@ -24,8 +24,9 @@ export default class Logo extends Component {
         {this.state.array.map((el, index) => (
           <Span
             key={index}
-            posicion={index}
-            size={22 + Math.pow(Math.abs(index - this.state.long), 1.3)}
+            size={
+              this.props.size + Math.pow(Math.abs(index - this.state.long), 1.3)
+            }
             letter={el}
           />
         ))}
