@@ -281,16 +281,87 @@ ul.wrapper::before {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
 }
-/*---------------------- Login ---------------------------*/
+/*---------------------- First ---------------------------*/
 .login {
   background: url("./assets/fonfo-inicio-de-sesion.jpg");
-  box-shadow: 0px -20vh 100vh var(--principal) inset,
-    0px 20vh 100vh var(--principal) inset;
+  box-shadow: 0px -30vh 100vh var(--principal) inset,
+    0px 30vh 100vh var(--principal) inset;
   height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(min-content, max-content);
+  justify-content: center;
+  align-content: center;
+}
+.first-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+.first-page h3 {
+  font-size: 4.5em;
+}
+.first-page h4 {
+  font-size: 1.5em;
+  padding: 18px;
+}
+.first-page p {
+  font-size: 1em;
+  font-weight: bold;
+  padding-bottom: 18px;
+}
+.first-page > div {
+  width: 80%;
+  height: 60px;
+  display: grid;
+  grid-template-columns: 1fr 30%;
+  gap: 1px;
+}
+.form-email {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-color);
+}
+.form-email input[type="email"] {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  padding: 0 5px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+.form-email p {
+  position: absolute;
+  color: rgb(151, 151, 151);
+  font-weight: normal;
+  left: 5px;
+  top: calc(50% - 20px / 2);
+  transition-property: top, font-weight;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+.form-email input:focus ~ p,
+.form-email input:not(:placeholder-shown) ~ p {
+  top: calc(8px - 0.6rem / 2);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.first-page div button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.first-page div button span {
+  overflow: hidden;
 }
 /*--------------------- Inicio ---------------------------*/
 .intro {
@@ -538,5 +609,37 @@ footer > i {
   }
   .drop-btn span {
     overflow: hidden;
+  }
+  .first-page h3 {
+    font-size: 3em;
+  }
+  .first-page h4 {
+    font-size: 1em;
+  }
+  .first-page p {
+    font-size: 0.7em;
+  }
+  .first-page > div {
+    height: auto;
+    grid-template-columns: auto;
+    grid-template-rows: 70px auto;
+    gap: 30px;
+  }
+  .first-page div button {
+    width: min-content;
+    justify-self: center;
+  }
+}
+@media (max-width: 560px) {
+  .first-page h3 {
+    font-size: 2em;
+  }
+  .first-page h4 {
+    font-size: 0.7em;
+  }
+}
+@media (max-width: 380px) {
+  .first-page h3 {
+    font-size: 1em;
   }
 }
