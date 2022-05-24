@@ -288,7 +288,6 @@ ul.wrapper::before {
     0px 30vh 100vh var(--principal) inset;
   height: 100vh;
   display: grid;
-  grid-template-columns: minmax(min-content, max-content);
   justify-content: center;
   align-content: center;
 }
@@ -312,7 +311,7 @@ ul.wrapper::before {
   font-weight: bold;
   padding-bottom: 18px;
 }
-.first-page form {
+.first-page > form {
   width: 80%;
   display: grid;
   grid-template-columns: 1fr 30%;
@@ -324,7 +323,9 @@ ul.wrapper::before {
   height: 60px;
   background-color: var(--text-color);
 }
-.form-email input[type="email"] {
+.form-email input[type="email"],
+.form-email input[type="text"],
+.form-email input[type="password"] {
   position: absolute;
   bottom: 8px;
   left: 0;
@@ -357,7 +358,7 @@ ul.wrapper::before {
 .form-email input:not(:placeholder-shown) {
   z-index: 1;
 }
-.first-page form button {
+.first-page > form button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -365,16 +366,34 @@ ul.wrapper::before {
   font-size: 1rem;
   cursor: pointer;
 }
-.first-page form button span {
+.first-page > form button span {
   overflow: hidden;
 }
 
-.first-page form > span {
+.first-page > form > span {
   text-align-last: left;
   font-size: 0.82rem;
   color: rgb(255, 115, 35);
   font-weight: bold;
   height: 20px;
+}
+/*---------------------- Login ---------------------------*/
+form#form-login {
+  width: 450px;
+  height: 660px;
+  padding: 60px 68px 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+form#form-login h3 {
+  font-size: 2rem;
+  margin-bottom: 28px;
+}
+form#form-login .form-email {
+  display: block;
+  background-color: #333;
+}
+form#form-login .form-email input {
+  color: var(--text-color);
 }
 /*--------------------- Inicio ---------------------------*/
 .intro {
@@ -546,7 +565,6 @@ ul.wrapper::before {
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
-/*--------------------------------------------------------*/
 /*--------------------- Footer ---------------------------*/
 .footer {
   width: 100%;
@@ -632,16 +650,16 @@ footer > i {
   .first-page p {
     font-size: 0.7em;
   }
-  .first-page form {
+  .first-page > form {
     height: auto;
     grid-template-columns: auto;
     grid-template-rows: repeat(3, auto);
   }
-  .first-page form button {
+  .first-page > form button {
     width: min-content;
     justify-self: center;
   }
-  .first-page form > span {
+  .first-page > form > span {
     font-size: 0.75rem;
     grid-row-start: 2;
   }

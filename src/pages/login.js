@@ -4,10 +4,18 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <main className="login">
-      <form>
-        <h3>Iniciar sesión</h3>
-        <input type="text" placeholder="Email o número de teléfono" />
-        <input type="password" placeholder="Contraseña" />
+      <form id="form-login">
+        <h3>Inicia sesión</h3>
+        <label className="form-email">
+          <input type="text" name="user" placeholder=" " />
+          <p>Email o número de teléfono</p>
+        </label>
+        {/* <span>{message}</span> */}
+        <label className="form-email">
+          <input type="password" name="password" placeholder=" " />
+          <p>Contraseña</p>
+        </label>
+        {/* <span>{message}</span> */}
         <Link to="/browse" className="sign">
           Iniciar sesión
         </Link>

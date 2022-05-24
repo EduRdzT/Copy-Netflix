@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { handleEmail, handleSubmit } from "../helpers/validaciones";
 
 const initial = {
   ok: false,
@@ -6,37 +7,8 @@ const initial = {
 };
 
 const First = () => {
-  const [form, setForm] = useState({});
   const [wrong, setWrong] = useState(initial);
   const [message, setMessage] = useState("");
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  useEffect(() => {
-    const regex = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-    if (!form.email) {
-      setWrong(initial);
-      return;
-    }
-    if (!regex.test(form.email)) {
-      setWrong({ ok: false, message: "Email incorrecto" });
-    } else {
-      setWrong({ ok: true, message: "" });
-    }
-  }, [form]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMessage(wrong.message);
-    if (wrong.ok) {
-      alert("El formulario se ha enviado");
-    }
-  };
 
   return (
     <main className="login">
@@ -53,13 +25,15 @@ const First = () => {
             <input
               type="email"
               name="email"
-              value={form.nombre}
-              onBlur={handleChange}
+              onBlur={(e) => handleEmail(e, setWrong, setMessage)}
               placeholder=" "
             />
             <p>Email</p>
           </label>
-          <button className="sign" onClick={handleSubmit}>
+          <button
+            className="sign"
+            onClick={(e) => handleSubmit(e, setMessage, wrong)}
+          >
             Comenzar
             <span className="material-symbols-outlined">navigate_next</span>
           </button>
