@@ -25,7 +25,7 @@ const First = () => {
             <input
               type="email"
               name="email"
-              onBlur={(e) => handleEmail(e, setWrong, setMessage)}
+              onBlur={(e) => handleEmail(e, setMessage, setWrong)}
               placeholder=" "
             />
             <p>Email</p>

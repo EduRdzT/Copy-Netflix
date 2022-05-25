@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { EmailPhone, handlePassword } from "../helpers/validaciones";
 
 const Login = () => {
+  const [messageText, setMessageText] = useState("");
+  const [messagePass, setMessagePass] = useState("");
+
   return (
     <main className="login">
       <form id="form-login">
         <h3>Inicia sesión</h3>
         <label className="form-email">
-          <input type="text" name="user" placeholder=" " />
+          <input
+            type="text"
+            name="user"
+            placeholder=" "
+            onBlur={(e) => EmailPhone(e, setMessageText)}
+          />
           <p>Email o número de teléfono</p>
         </label>
-        {/* <span>{message}</span> */}
+        <span>{messageText}</span>
         <label className="form-email">
-          <input type="password" name="password" placeholder=" " />
+          <input
+            type="password"
+            name="password"
+            placeholder=" "
+            onBlur={(e) => handlePassword(e, setMessagePass)}
+          />
           <p>Contraseña</p>
         </label>
-        {/* <span>{message}</span> */}
+        <span>{messagePass}</span>
         <Link to="/browse" className="sign">
           Iniciar sesión
         </Link>
-        <input type="checkbox" />
-        <span>Recuérdame</span>
+        <input type="checkbox" id="recordar" />
+        <label htmlFor="recordar">Recuérdame</label>
         <p>¿Necesitas ayuda?</p>
         <h4>
           ¿Primera vez en Netflix?
