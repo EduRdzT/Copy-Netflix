@@ -8,7 +8,7 @@ import OptionsUser from "./optionsUser";
 
 const w = window;
 
-const Pages = () => {
+const Pages = ({ visible, setVisible }) => {
   const [scrollY, setScrollY] = useState(0);
   const [hash, setHash] = useState(true);
   const [sign, setSign] = useState(true);
@@ -62,12 +62,16 @@ const Pages = () => {
           <Link to="/browse">
             <Logo logo="Copy-Net" size={22} />
           </Link>
-          <Menu />
-          <div className="icons">
-            <SearchLink />
-            <News />
-            <OptionsUser />
-          </div>
+          {!visible && (
+            <>
+              <Menu />
+              <div className="icons">
+                <SearchLink />
+                <News />
+                <OptionsUser setVisible={setVisible} />
+              </div>
+            </>
+          )}
         </nav>
       )}
     </>

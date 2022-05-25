@@ -458,6 +458,74 @@ form#form-login h6 {
   font-weight: normal;
   color: var(--text-color);
 }
+/*------------------- Choose User ------------------------*/
+#choose-user {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#choose-user h3 {
+  font-size: 3rem;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+.container-users {
+  display: grid;
+  grid-template-columns: repeat(5, 130px);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.container-users figure,
+.container-users figure figcaption {
+  cursor: pointer;
+}
+.container-users figure:hover img {
+  border: 2px solid white;
+}
+.container-users figure:hover figcaption {
+  color: var(--text-color);
+}
+.container-users figure:hover span {
+  background-color: white;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.container-users figure span {
+  color: var(--boton);
+  font-size: 6rem;
+  width: 100%;
+  height: 81%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 9px;
+}
+.container-users figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #a3a2a2;
+}
+#choose-user button {
+  color: gray;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  border: 1px solid gray;
+  background-color: transparent;
+  padding: 7.5px 22.5px;
+  cursor: pointer;
+}
+#choose-user button:hover {
+  color: white;
+  border: 1px solid white;
+}
 /*--------------------- Inicio ---------------------------*/
 .intro {
   position: absolute;
@@ -619,7 +687,6 @@ form#form-login h6 {
   -ms-transform: scaleY(1.5);
   -o-transform: scaleY(1.5);
 }
-/*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

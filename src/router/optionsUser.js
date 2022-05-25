@@ -6,7 +6,7 @@ import imgPerfil from "../assets/perfil-img.png";
 import Users from "./users";
 import Options from "./options";
 
-const OptionsUser = () => {
+const OptionsUser = ({ setVisible }) => {
   let options = useRef();
 
   return (
@@ -22,7 +22,7 @@ const OptionsUser = () => {
       <div className="wrapper invisible" ref={options}>
         <Users />
         <Options />
-        <Link to="/" className="closet-sesion">
+        <Link to="/" className="closet-sesion" onClick={() => setVisible(true)}>
           Cerrar sesión en Netflix
         </Link>
       </div>
