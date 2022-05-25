@@ -45,7 +45,7 @@ const Search = ({ refLink }) => {
       setFullForm(true);
       setIsBan(true);
     }
-  }, [form]);
+  }, [form, isBan, refLink]);
 
   useEffect(() => {
     if (visible) {
