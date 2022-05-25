@@ -18,19 +18,12 @@ const Search = ({ refLink }) => {
   };
 
   const handleChange = (e) => {
+    const $element = e.current ? e.current : e.target;
     setForm({
-      [e.target.name]: e.target.value,
+      [$element.name]: $element.value,
     });
-  };
-
-  const handleBtn = () => {
-    setForm(initial);
-    refInput.current.focus();
-  };
-
-  useEffect(() => {
     if (!refClean.current) return;
-    if (form.search.length) {
+    if ($element.value.length) {
       refClean.current.style.visibility = "visible";
       setFullForm(false);
       if (isBan) {
@@ -45,7 +38,13 @@ const Search = ({ refLink }) => {
       setFullForm(true);
       setIsBan(true);
     }
-  }, [form, isBan, refLink]);
+  };
+
+  const handleBtn = () => {
+    refInput.current.value = "";
+    refInput.current.focus();
+    handleChange(refInput);
+  };
 
   useEffect(() => {
     if (visible) {
