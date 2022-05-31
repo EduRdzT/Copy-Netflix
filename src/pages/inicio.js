@@ -1,12 +1,18 @@
-import { useState } from "react";
 import AllMovies from "../components/allMovies";
 import ChooseUser from "../components/chooseUser";
 import Footer from "../components/footer";
 import Intro from "../components/intro";
 
-const Inicio = ({ setVisible, visible }) => {
-  const [movie, setMovie] = useState(null);
-
+const Inicio = ({
+  setVisible,
+  visible,
+  movieID,
+  logo,
+  movies,
+  setMovies,
+  getType,
+  limit,
+}) => {
   return (
     <main>
       {visible ? (
@@ -15,8 +21,14 @@ const Inicio = ({ setVisible, visible }) => {
         </>
       ) : (
         <>
-          <Intro setMovie={setMovie} />
-          <AllMovies movie={movie} />
+          <Intro setMovies={setMovies} movieID={movieID} getType={getType} />
+          <AllMovies
+            movies={movies}
+            setMovies={setMovies}
+            getType={getType}
+            limit={limit}
+            logo={logo}
+          />
           <Footer />
         </>
       )}

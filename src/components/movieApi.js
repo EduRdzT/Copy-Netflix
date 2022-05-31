@@ -26,10 +26,11 @@ const genres = [
   { id: 37, name: "Western" },
 ];
 
-export default function MovieApi() {
+export default function MovieApi({ setAllMovies, allMovies, getType, limit }) {
   let refMovies = useRef();
   const [movies, setMovies] = useState([]);
   const [sizeHeight, setSizeHeight] = useState(sizecontainer(refMovies));
+  const key = TMDB_KEYS.keyApi;
 
   setTimeout(() => {
     setSizeHeight(() => sizecontainer(refMovies));
@@ -39,19 +40,16 @@ export default function MovieApi() {
     setSizeHeight(() => sizecontainer(refMovies))
   );
 
-  let key = TMDB_KEYS.keyApi;
-  // let url = `https://api.themoviedb.org/3/movie/76341?api_key=${key}`;
-  // let url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=es-ES`;
-  // let url = `https://api.themoviedb.org/3/genre/tv/list?api_key=${key}&language=es-ES`;
-  // let url = `https://api.themoviedb.org/3/list/99?api_key=${key}&language=es-ES`;
-  // let url = `https://api.themoviedb.org/3/configuration?api_key=${key}&language=es-ES`;
-  // let url = `https://api.themoviedb.org/3/discover/movie?with_genres=9648&sort_by=popularity.desc?&api_key=${key}&language=es-ES`;
-  // let url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc?&api_key=${key}&language=es-ES`;
+  // Novedades populares
+  // let url = `https://api.themoviedb.org/3/discover/movie?with_genres=${el.id}&primary_release_year=2020,2021&sort_by=popularity.desc?&api_key=${key}&language=es-ES`;
 
   useEffect(() => {
+    if (allMovies.result.length === limit) return;
+
     genres.forEach(async (el) => {
-      let url = `https://api.themoviedb.org/3/discover/movie?with_genres=${el.id}&sort_by=popularity.desc?&api_key=${key}&language=es-ES`;
+      let url = `https://api.themoviedb.org/3/discover/${getType}?with_genres=${el.id}&sort_by=popularity.desc?&api_key=${key}&language=es-ES`;
       await getHttp(url).then((res) => {
+        if (res.results.length < 20) return;
         let arrayMovies = {
           [el.name]: res.results,
         };
@@ -61,17 +59,25 @@ export default function MovieApi() {
         );
       });
     });
-    //setDb(() => JSON.parse(JSON.stringify(movies)));
-  }, [key]);
+  }, [key, getType, allMovies, limit]);
 
-  const arrayMovies = Object.entries(movies);
+  let arrayMovies = Object.entries(movies);
+
+  useEffect(() => {
+    if (allMovies.result.length === limit) return;
+
+    const movies = { result: arrayMovies };
+    setAllMovies((el) =>
+      el.result.length !== limit ? { ...el, ...movies } : el
+    );
+  }, [arrayMovies, setAllMovies, limit, allMovies]);
 
   return (
     <div className="all-movies">
-      {arrayMovies.length === 0 ? (
+      {allMovies.result.length === 0 ? (
         <h3>Cargando...</h3>
       ) : (
-        arrayMovies.map(([genre, value], index) => (
+        allMovies.result.map(([genre, value], index) => (
           <div key={index} className="container-genre">
             <h2 className="genre">{genre}</h2>
             <article id={"id" + index} className={"movies"} ref={refMovies}>

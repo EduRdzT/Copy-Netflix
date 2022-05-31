@@ -1,16 +1,15 @@
 import React from "react";
 import Imagen from "./imagen";
-import logoBatman from "../assets/the_batman_logo.png";
 
-function InfoIntro({ info }) {
+function InfoIntro({ info, logo }) {
   return (
     <figure className="info-intro">
       <Imagen
-        location={logoBatman}
-        clase="border"
-        title={info && info.movie.title}
+        location={logo}
+        clase={false}
+        title={info.intro && info.intro.title}
       />
-      <figcaption>{info && info.movie.overview}</figcaption>
+      <figcaption>{info.intro && info.intro.overview}</figcaption>
       <div className="container-btn">
         <button className="btn-play">
           <p>

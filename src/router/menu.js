@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { isMenu } from "../components/dropdown";
 
 const Menu = () => {
@@ -29,12 +29,6 @@ const Menu = () => {
     responsiveMedia(breakpoint);
   }, [breakpoint]);
 
-  const handleToggelMenu = (e) => {
-    const $active = document.querySelector(".active");
-    $active.classList.remove("active");
-    e.target.classList.add("active");
-  };
-
   return (
     <div>
       <div
@@ -54,29 +48,19 @@ const Menu = () => {
         onMouseLeave={(e) => isMenu(e, menu_wrapper, "midlle", isPermiss)}
       >
         <li>
-          <Link to="/browse" onClick={handleToggelMenu} className="active">
-            Inicio
-          </Link>
+          <NavLink to="/browse">Inicio</NavLink>
         </li>
         <li>
-          <Link to="/browse/genre/454" onClick={handleToggelMenu}>
-            Series
-          </Link>
+          <NavLink to="/browse/genre/454">Series</NavLink>
         </li>
         <li>
-          <Link to="/browse/genre/45" onClick={handleToggelMenu}>
-            Peliculas
-          </Link>
+          <NavLink to="/browse/genre/45">Peliculas</NavLink>
         </li>
         <li>
-          <Link to="/latest" onClick={handleToggelMenu}>
-            Novedades populares
-          </Link>
+          <NavLink to="/latest">Novedades populares</NavLink>
         </li>
         <li>
-          <Link to="/browse/my-list" onClick={handleToggelMenu}>
-            Mi lista
-          </Link>
+          <NavLink to="/browse/my-list">Mi lista</NavLink>
         </li>
       </ul>
     </div>

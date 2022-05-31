@@ -9,7 +9,7 @@ export class Intro extends Component {
   };
 
   componentDidMount() {
-    let url = `https://api.themoviedb.org/3/movie/414906?api_key=${TMDB_KEYS.keyApi}&language=es-ES`;
+    let url = `https://api.themoviedb.org/3/${this.props.getType}/${this.props.movieID}?api_key=${TMDB_KEYS.keyApi}&language=es-ES`;
     const getData = async (url) => {
       try {
         let res = await fetch(url);
@@ -25,14 +25,16 @@ export class Intro extends Component {
 
         let data = await res.json();
         let movie = {
-          title: data.title,
-          overview: data.overview,
-          backdrop_path: data.backdrop_path,
-          err: false,
+          intro: {
+            title: data.title,
+            overview: data.overview,
+            backdrop_path: data.backdrop_path,
+            err: false,
+          },
         };
 
         this.setState({ movie });
-        this.props.setMovie({ movie });
+        this.props.setMovies((el) => (!el.intro ? { ...el, ...movie } : el));
       } catch (err) {
         this.props.setMovie({ err });
       }
@@ -44,14 +46,14 @@ export class Intro extends Component {
   render() {
     return (
       <figure className="intro">
-        {this.state.movie && (
+        {this.state.movie.intro && (
           <Imagen
             location={
-              this.state.movie.backdrop_path &&
-              this.state.urlImg + this.state.movie.backdrop_path
+              this.state.movie.intro.backdrop_path &&
+              this.state.urlImg + this.state.movie.intro.backdrop_path
             }
             clase={false}
-            title={this.state.movie.title}
+            title={this.state.movie.intro.title}
           />
         )}
       </figure>
