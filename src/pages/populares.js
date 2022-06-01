@@ -1,9 +1,25 @@
-const Populares = () => {
+import Footer from "../components/footer";
+import ChooseUser from "../components/chooseUser";
+import PopularMovies from "../components/popularMovies";
+
+const Populares = ({ setVisible, visible, movies, setMovies, limit }) => {
   return (
-    <div>
-      <h3>Populares</h3>
-      <p>Bienvenid@s al tema de las Rutas en React</p>
-    </div>
+    <main>
+      {visible ? (
+        <>
+          <ChooseUser setVisible={setVisible} />
+        </>
+      ) : (
+        <>
+          <PopularMovies
+            allMovies={movies}
+            setAllMovies={setMovies}
+            limit={limit}
+          />
+          <Footer />
+        </>
+      )}
+    </main>
   );
 };
 

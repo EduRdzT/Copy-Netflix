@@ -22,6 +22,7 @@ const Rutas = () => {
   const [movies, setMovies] = useState(initial);
   const [series, setSeries] = useState(initial);
   const [onlyMovies, setOnlyMovies] = useState(initial);
+  const [popular, setPopular] = useState([]);
 
   return (
     <Router>
@@ -86,7 +87,18 @@ const Rutas = () => {
             />
           </Route>
         </Route>
-        <Route path="latest" element={<Populares />} />
+        <Route
+          path="latest"
+          element={
+            <Populares
+              setVisible={setVisible}
+              visible={visible}
+              movies={popular}
+              setMovies={setPopular}
+              limit={5}
+            />
+          }
+        />
         <Route path="search" element={<Busqueda />} />
         <Route path="YourAccount" element={<Cuenta />} />
         <Route path="*" element={<Error404 />} />
