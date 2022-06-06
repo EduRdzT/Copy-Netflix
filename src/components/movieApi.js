@@ -80,7 +80,12 @@ export default function MovieApi({ setAllMovies, allMovies, getType, limit }) {
         allMovies.result.map(([genre, value], index) => (
           <div key={index} className="container-genre">
             <h2 className="genre">{genre}</h2>
-            <article id={"id" + index} className={"movies"} ref={refMovies}>
+            <article
+              id={"id" + index}
+              className={"movies"}
+              ref={refMovies}
+              data-position={0}
+            >
               <GenreMovie key={index} value={value} />
             </article>
             <MovieSlide key={index} moviesHeight={sizeHeight} index={index} />

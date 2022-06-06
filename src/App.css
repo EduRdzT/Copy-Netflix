@@ -32,7 +32,7 @@ figcaption {
   grid-template-columns: auto 1fr auto;
   gap: 2.5rem;
   align-items: center;
-  z-index: 1;
+  z-index: 3;
   transition: background-color 0.8s;
   -webkit-transition: background-color 0.8s;
   -moz-transition: background-color 0.8s;
@@ -546,8 +546,8 @@ form#form-login h6 {
   grid-template-rows: 40vw 1fr;
 }
 .info-intro {
-  width: 50%;
-  padding: 3vw 5% 0;
+  width: 50vw;
+  padding: 3vw 4vw 0;
   display: grid;
   grid-template-rows: 50% 20% min-content;
   overflow: hidden;
@@ -604,31 +604,45 @@ form#form-login h6 {
   display: grid;
   grid-template-rows: auto;
   gap: 35px;
+  overflow: visible;
 }
 .container-genre {
   position: relative;
   display: grid;
   grid-template-rows: auto;
+  overflow: visible;
+}
+.container-genre::-webkit-scrollbar {
+  display: none;
 }
 .movies {
+  overflow: visible;
   display: grid;
   grid-template-columns: repeat(20, calc((92vw - (8px * 6)) / 5));
   gap: 0 8px;
   padding: 0 4vw;
+  transition: transform 0.6s;
+  -webkit-transition: transform 0.6s;
+  -moz-transition: transform 0.6s;
+  -ms-transition: transform 0.6s;
+  -o-transition: transform 0.6s;
 }
+
 /* h2 */
 .genre {
   padding: 5px 4vw;
   font-size: 1.6vw;
+  z-index: -1;
 }
 /* cards */
-.movies img {
+.movies > img {
   cursor: pointer;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  z-index: -10000;
 }
 #next,
 #prev {
@@ -641,6 +655,7 @@ form#form-login h6 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 2;
 }
 #prev {
   display: none;
@@ -652,7 +667,7 @@ form#form-login h6 {
   -o-border-radius: 0 7px 7px 0;
 }
 #next {
-  right: 0;
+  left: calc(100vw - 4vw - 9.5px);
   border-radius: 7px 0 0 7px;
   -webkit-border-radius: 7px 0 0 7px;
   -moz-border-radius: 7px 0 0 7px;
@@ -687,7 +702,113 @@ form#form-login h6 {
   -ms-transform: scaleY(1.5);
   -o-transform: scaleY(1.5);
 }
-/*--------------------------------------------------------*/
+/*---------------------- MY LIST ------------------------*/
+
+#main > h3 {
+  background-color: var(--principal);
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: 0;
+  position: relative;
+  z-index: -2;
+  padding-left: 4%;
+  /* margin-top: 120px; */
+  margin-top: 80px;
+  height: 68px;
+  font-size: 2rem;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+.my-list {
+  min-height: 100vh;
+  padding: 4vw;
+  position: relative;
+  overflow: visible;
+}
+.list-movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 8vh 8px;
+  overflow: visible;
+}
+.movie {
+  overflow: visible;
+  position: relative;
+}
+.movie > img {
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.movie:hover figcaption {
+  transform: perspective(200px) translate3d(0, -200px, 40px);
+  -webkit-transform: perspective(200px) translate3d(0, -200px, 40px);
+  -moz-transform: perspective(200px) translate3d(0, -200px, 40px);
+  -ms-transform: perspective(200px) translate3d(0, -200px, 40px);
+  -o-transform: perspective(200px) translate3d(0, -200px, 40px);
+}
+.movie figcaption {
+  min-width: 250px;
+  background-color: var(--principal);
+  box-shadow: 1px 1px 12px black;
+  position: absolute;
+  z-index: 2;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.movie figcaption h3 {
+  margin: 7px 15px;
+}
+.movie figcaption ul li {
+  display: inline-block;
+  padding-right: 5px;
+}
+.movie figcaption ul {
+  list-style: circle;
+  padding: 10px 15px;
+}
+.btn-card {
+  padding: 10px 15px;
+}
+.btn-card button:last-child {
+  float: right;
+}
+.btn-card button:first-child span,
+.btn-card button:last-child span {
+  font-size: 25px;
+}
+.btn-card button:not(:first-child) {
+  background-color: #333;
+  color: var(--text-color);
+  border: 1px solid white;
+}
+.btn-card button:not(:last-child, :first-child) {
+  margin-left: 7px;
+}
+.btn-card button {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn-card button span {
+  overflow: hidden;
+}
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

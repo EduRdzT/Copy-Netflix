@@ -14,7 +14,31 @@ const MovieSlide = ({ moviesHeight, index }) => {
       $movies = document.querySelector(`#${genre}`),
       $img = $movies.querySelector("img").offsetWidth;
 
+    let position = $movies.getAttribute("data-position");
+
     if (Btn === "next") {
+      position++;
+    } else if (Btn === "prev") {
+      position--;
+    }
+
+    $movies.dataset.position = position;
+    scrollMovies = (8 * 5 + $img * 5 + 1) * position;
+    $movies.style.transform = `translateX(-${scrollMovies}px)`;
+
+    if (position === 3) {
+      refNext.current.style.display = "none";
+    } else {
+      refNext.current.style.display = "block";
+    }
+
+    if (position === 0) {
+      refPrev.current.style.display = "none";
+    } else {
+      refPrev.current.style.display = "block";
+    }
+
+    /* if (Btn === "next") {
       scrollMovies = scrollMovies + 8 * 5 + $img * 5;
     } else if (Btn === "prev") {
       scrollMovies = scrollMovies - 8 * 5 - $img * 5;
@@ -35,7 +59,7 @@ const MovieSlide = ({ moviesHeight, index }) => {
     $movies.scrollTo({
       behavior: "smooth",
       left: scrollMovies,
-    });
+    }); */
   };
 
   const handleBtnEnter = () => {

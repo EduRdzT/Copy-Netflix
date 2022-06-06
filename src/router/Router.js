@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Busqueda from "../pages/busqueda";
-import Cuenta from "../pages/cuenta";
 import Error404 from "../pages/Error404";
 import First from "../pages/first";
 import Inicio from "../pages/inicio";
@@ -11,11 +10,45 @@ import Pages from "./Links";
 import logoBatman from "../assets/the_batman_logo.png";
 import logoBreakingBad from "../assets/breaking_bad_logo.png";
 import logoCruella from "../assets/cruella_logo.png";
+import MyList from "../pages/myList";
 
 const initial = {
   intro: null,
   result: [],
 };
+
+const initialDb = [
+  {
+    id: 1,
+    movie: 414906,
+    type: "movie",
+  },
+  {
+    id: 2,
+    movie: 1396,
+    type: "tv",
+  },
+  {
+    id: 3,
+    movie: 337404,
+    type: "movie",
+  },
+  {
+    id: 4,
+    movie: 744,
+    type: "movie",
+  },
+  {
+    id: 5,
+    movie: 92830,
+    type: "tv",
+  },
+  {
+    id: 6,
+    movie: 338953,
+    type: "movie",
+  },
+];
 
 const Rutas = () => {
   const [visible, setVisible] = useState(true);
@@ -23,6 +56,17 @@ const Rutas = () => {
   const [series, setSeries] = useState(initial);
   const [onlyMovies, setOnlyMovies] = useState(initial);
   const [popular, setPopular] = useState([]);
+  const [db, setDb] = useState(initialDb);
+
+  const createData = (data) => {
+    data.id = Date.now();
+    setDb([...db, data]);
+  };
+
+  const deleteData = (id) => {
+    let newData = db.filter((el) => el.id !== id);
+    setDb(newData);
+  };
 
   return (
     <Router>
@@ -43,15 +87,19 @@ const Rutas = () => {
                 setMovies={setMovies}
                 getType={"movie"}
                 limit={19}
+                createData={createData}
               />
             }
           />
           <Route
             path="my-list"
             element={
-              <main style={{ padding: "1rem" }}>
-                <p>Series</p>
-              </main>
+              <MyList
+                setVisible={setVisible}
+                visible={visible}
+                deleteData={deleteData}
+                db={db}
+              />
             }
           />
           <Route path="genre">
@@ -67,6 +115,7 @@ const Rutas = () => {
                   setMovies={setSeries}
                   getType={"tv"}
                   limit={11}
+                  createData={createData}
                 />
               }
             />
@@ -82,6 +131,7 @@ const Rutas = () => {
                   setMovies={setOnlyMovies}
                   getType={"movie"}
                   limit={19}
+                  createData={createData}
                 />
               }
             />
@@ -96,11 +146,11 @@ const Rutas = () => {
               movies={popular}
               setMovies={setPopular}
               limit={5}
+              createData={createData}
             />
           }
         />
         <Route path="search" element={<Busqueda />} />
-        <Route path="YourAccount" element={<Cuenta />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </Router>
