@@ -2,7 +2,15 @@ import React from "react";
 import InfoIntro from "./infoIntro";
 import MovieApi from "./movieApi";
 
-const AllMovies = ({ movies, setMovies, getType, limit, logo }) => {
+const AllMovies = ({
+  movies,
+  setMovies,
+  getType,
+  limit,
+  logo,
+  createData,
+  db,
+}) => {
   return (
     <section className="genres-movie">
       <InfoIntro info={movies} logo={logo} />
@@ -11,6 +19,8 @@ const AllMovies = ({ movies, setMovies, getType, limit, logo }) => {
         setAllMovies={setMovies}
         getType={getType}
         limit={limit}
+        createData={createData}
+        db={db}
       />
     </section>
   );

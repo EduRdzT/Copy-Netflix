@@ -37,29 +37,6 @@ const MovieSlide = ({ moviesHeight, index }) => {
     } else {
       refPrev.current.style.display = "block";
     }
-
-    /* if (Btn === "next") {
-      scrollMovies = scrollMovies + 8 * 5 + $img * 5;
-    } else if (Btn === "prev") {
-      scrollMovies = scrollMovies - 8 * 5 - $img * 5;
-    }
-
-    if (scrollMovies > 3300) {
-      refNext.current.style.display = "none";
-    } else {
-      refNext.current.style.display = "block";
-    }
-
-    if (scrollMovies > 100) {
-      refPrev.current.style.display = "block";
-    } else {
-      refPrev.current.style.display = "none";
-    }
-
-    $movies.scrollTo({
-      behavior: "smooth",
-      left: scrollMovies,
-    }); */
   };
 
   const handleBtnEnter = () => {

@@ -5,7 +5,7 @@ import ListMovie from "./listMovie";
 
 const key = TMDB_KEYS.keyApi;
 
-const ListAppi = ({ db }) => {
+const ListAppi = ({ db, createData }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,12 @@ const ListAppi = ({ db }) => {
   return (
     <article className="list-movies">
       {movies.map((value, index) => (
-        <ListMovie key={index} value={value} />
+        <ListMovie
+          key={index}
+          value={value}
+          createData={createData}
+          setMovies={setMovies}
+        />
       ))}
     </article>
   );

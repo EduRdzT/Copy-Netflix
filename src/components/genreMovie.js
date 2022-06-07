@@ -25,9 +25,29 @@ const genres = {
   37: "Western",
 };
 
-export default function GenreMovie({ value }) {
+export default function GenreMovie({ value, createData, db, getType }) {
   let refFigcaption = useRef();
   const urlImg = "https://image.tmdb.org/t/p/original";
+
+  const iconSave = (el) => {
+    for (let e of db) {
+      if (parseInt(e.movie) === parseInt(el.id)) {
+        return "done";
+      }
+    }
+  };
+
+  const handleClick = (el, type) => {
+    const $button = el.target.matches("button")
+      ? el.target
+      : el.target.parentElement;
+    const data = {
+      movie: $button.getAttribute("data-id"),
+      type,
+    };
+    createData($button, data);
+  };
+
   return (
     <>
       {value.map((el) => (
@@ -56,8 +76,13 @@ export default function GenreMovie({ value }) {
               <button>
                 <span className="material-symbols-outlined">play_arrow</span>
               </button>
-              <button>
-                <span className="material-symbols-outlined">add</span>
+              <button
+                data-id={el.id}
+                onClick={(el) => handleClick(el, getType)}
+              >
+                <span className="material-symbols-outlined">
+                  {iconSave(el) ?? "add"}
+                </span>
               </button>
               <button>
                 <span className="material-symbols-outlined">thumb_up</span>

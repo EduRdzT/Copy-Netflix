@@ -3,7 +3,7 @@ import ChooseUser from "../components/chooseUser";
 import Footer from "../components/footer";
 import ListAppi from "../components/listAppi";
 
-const MyList = ({ visible, setVisible, deleteData, db }) => {
+const MyList = ({ visible, setVisible, createData, db }) => {
   return (
     <main id="main">
       {visible ? (
@@ -14,7 +14,7 @@ const MyList = ({ visible, setVisible, deleteData, db }) => {
         <>
           <h3>Mi lista</h3>
           <section className="my-list">
-            <ListAppi db={db} />
+            <ListAppi db={db} createData={createData} />
           </section>
           <Footer />
         </>

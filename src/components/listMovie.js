@@ -3,9 +3,17 @@ import Imagen from "./imagen";
 import imgAvailable from "../assets/no-image-available.jpg";
 import { hiddenCard, visibleCard } from "../helpers/displayCard";
 
-const ListMovie = ({ value }) => {
+const ListMovie = ({ value, createData, setMovies }) => {
   let refFigcaption = useRef();
   const urlImg = "https://image.tmdb.org/t/p/original";
+
+  const handleClick = (el) => {
+    const $button = el.target.matches("button")
+      ? el.target
+      : el.target.parentElement;
+    setMovies([]);
+    createData($button);
+  };
 
   return (
     <figure
@@ -32,10 +40,7 @@ const ListMovie = ({ value }) => {
           <button>
             <span className="material-symbols-outlined">play_arrow</span>
           </button>
-          {/* <button>
-            <span className="material-symbols-outlined">add</span>
-          </button> */}
-          <button>
+          <button data-id={value.id} onClick={handleClick}>
             <span className="material-symbols-outlined">done</span>
           </button>
           <button>

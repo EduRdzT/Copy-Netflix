@@ -26,7 +26,14 @@ const genres = [
   { id: 37, name: "Western" },
 ];
 
-export default function MovieApi({ setAllMovies, allMovies, getType, limit }) {
+export default function MovieApi({
+  setAllMovies,
+  allMovies,
+  getType,
+  limit,
+  createData,
+  db,
+}) {
   let refMovies = useRef();
   const [movies, setMovies] = useState([]);
   const [sizeHeight, setSizeHeight] = useState(sizecontainer(refMovies));
@@ -86,7 +93,13 @@ export default function MovieApi({ setAllMovies, allMovies, getType, limit }) {
               ref={refMovies}
               data-position={0}
             >
-              <GenreMovie key={index} value={value} />
+              <GenreMovie
+                key={index}
+                value={value}
+                createData={createData}
+                db={db}
+                getType={getType}
+              />
             </article>
             <MovieSlide key={index} moviesHeight={sizeHeight} index={index} />
           </div>

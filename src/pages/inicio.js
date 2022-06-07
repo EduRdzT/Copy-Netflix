@@ -12,6 +12,8 @@ const Inicio = ({
   setMovies,
   getType,
   limit,
+  createData,
+  db,
 }) => {
   return (
     <main>
@@ -28,6 +30,8 @@ const Inicio = ({
             getType={getType}
             limit={limit}
             logo={logo}
+            createData={createData}
+            db={db}
           />
           <Footer />
         </>

@@ -58,14 +58,18 @@ const Rutas = () => {
   const [popular, setPopular] = useState([]);
   const [db, setDb] = useState(initialDb);
 
-  const createData = (data) => {
-    data.id = Date.now();
-    setDb([...db, data]);
-  };
-
-  const deleteData = (id) => {
-    let newData = db.filter((el) => el.id !== id);
-    setDb(newData);
+  const createData = (element, data) => {
+    if (element.firstElementChild.textContent === "add") {
+      element.firstElementChild.textContent = "done";
+      data.id = Date.now();
+      setDb([...db, data]);
+    } else if (element.firstElementChild.textContent === "done") {
+      element.firstElementChild.textContent = "add";
+      let newData = db.filter(
+        (el) => parseInt(el.movie) !== parseInt(element.getAttribute("data-id"))
+      );
+      setDb(newData);
+    }
   };
 
   return (
@@ -88,6 +92,7 @@ const Rutas = () => {
                 getType={"movie"}
                 limit={19}
                 createData={createData}
+                db={db}
               />
             }
           />
@@ -97,7 +102,7 @@ const Rutas = () => {
               <MyList
                 setVisible={setVisible}
                 visible={visible}
-                deleteData={deleteData}
+                createData={createData}
                 db={db}
               />
             }
@@ -116,6 +121,7 @@ const Rutas = () => {
                   getType={"tv"}
                   limit={11}
                   createData={createData}
+                  db={db}
                 />
               }
             />
@@ -132,6 +138,7 @@ const Rutas = () => {
                   getType={"movie"}
                   limit={19}
                   createData={createData}
+                  db={db}
                 />
               }
             />

@@ -806,6 +806,9 @@ form#form-login h6 {
   overflow: hidden;
   cursor: pointer;
 }
+.btn-card button:active {
+  background-color: aliceblue;
+}
 .btn-card button span {
   overflow: hidden;
 }
